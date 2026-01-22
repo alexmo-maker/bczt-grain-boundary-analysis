@@ -1,5 +1,6 @@
 # bczt-grain-boundary-analysis
-Python script for grain boundary and grain size analysis of BCZT ceramics
+This script was developed and used for the grain boundary and grain size analysis presented in a Master’s thesis on doped BCZT ceramics (Graz University of Technology, 2026).
+
 # BCZT Grain Boundary Analysis
 
 This repository contains a Python script used for grain boundary and grain size analysis
