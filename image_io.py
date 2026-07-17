@@ -3,25 +3,25 @@ import numpy as np
 from PySide6.QtWidgets import QFileDialog, QInputDialog, QMessageBox
 
 def prepare_image_for_analysis():
-    """Bild laden, Maßstab setzen und Bild + Maßstab zurückgeben."""
+    """Bild laden, Maßstab setzen und Bild + Maßstab + Dateipfad zurückgeben."""
     path, _ = QFileDialog.getOpenFileName(None, "Bild auswählen", "", "Bilder (*.png *.jpg *.jpeg *.tif *.tiff)")
     if not path:
         QMessageBox.warning(None, "Kein Bild ausgewählt", "Bitte wähle ein Bild aus.")
-        return None, None
+        return None, None, None
 
     image = cv2.imread(path)
     if image is None:
         QMessageBox.critical(None, "Fehler", "Bild konnte nicht geladen werden.")
-        return None, None
+        return None, None, None
 
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     microns_per_pixel = get_scale_from_user(image_rgb)
     if microns_per_pixel is None:
         QMessageBox.warning(None, "Maßstab nicht gesetzt", "Der Maßstab wurde nicht korrekt gesetzt.")
-        return None, None
+        return None, None, None
 
-    return image_rgb, microns_per_pixel
+    return image_rgb, microns_per_pixel, path
 
 
 def get_scale_from_user(image_rgb):
