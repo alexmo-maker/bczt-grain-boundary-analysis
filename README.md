@@ -24,4 +24,4 @@ The script performs:
 
 ## Usage
 ```bash
-python grain_boundary_analysis.py
+python main.py
